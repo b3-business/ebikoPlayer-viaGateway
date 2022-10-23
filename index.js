@@ -2,6 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 const { token } = require('./config.json');
+const { initAudioPlayer } = require('./src/player.js');
 
 const client = new Client({
     intents: [
@@ -27,6 +28,7 @@ for (const file of commandFiles) {
 }
 
 client.once(Events.ClientReady, () => {
+    initAudioPlayer();
     console.log('Ready!');
 });
 

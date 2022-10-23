@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { joinVoiceChannel } = require('@discordjs/voice');
 const { VoiceConnectionStatus, createAudioResource, createAudioPlayer } = require('@discordjs/voice');
+const { getAudioPlayer } = require('../src/player');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -26,7 +27,7 @@ module.exports = {
             const bennyPath = "/Users/bjesuiter/02 The Saddest Noise.m4a";
             const bastiPath = "/home/ebiko/Music/Games und Filme (music)/ff8/02 - ride on.mp3";
             const resource = createAudioResource(bennyPath);
-            const player = createAudioPlayer();
+            const player = getAudioPlayer();
             player.play(resource);
             connection.subscribe(player);
         });
