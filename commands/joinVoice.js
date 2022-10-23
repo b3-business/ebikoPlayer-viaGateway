@@ -23,7 +23,9 @@ module.exports = {
         connection.on(VoiceConnectionStatus.Ready, () => {
             console.log('Voice Ready!');
 
-            const resource = createAudioResource('/home/ebiko/Music/Games und Filme (music)/ff8/02 - ride on.mp3');
+            const bennyPath = "/Users/bjesuiter/02 The Saddest Noise.m4a";
+            const bastiPath = "/home/ebiko/Music/Games und Filme (music)/ff8/02 - ride on.mp3";
+            const resource = createAudioResource(bennyPath);
             const player = createAudioPlayer();
             player.play(resource);
             connection.subscribe(player);
