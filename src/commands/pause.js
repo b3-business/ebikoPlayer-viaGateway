@@ -4,8 +4,8 @@ const { getAudioPlayer } = require('../player');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('play')
-        .setDescription('Starts playback of current resource.'),
+        .setName('pause')
+        .setDescription('Pauses playback of current resource.'),
 
     async execute(interaction) {
 
