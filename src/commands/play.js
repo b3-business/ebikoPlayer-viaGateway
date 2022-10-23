@@ -21,6 +21,6 @@ module.exports = {
         // play the player with the current resouce
         getAudioPlayer().unpause();
 
-        await interaction.reply({ content: 'Left!', ephemeral: true });
+        await interaction.reply({ content: 'Play!', ephemeral: true });
     },
 };
