@@ -1,4 +1,4 @@
-const { VoiceConnectionStatus, createAudioResource, createAudioPlayer } = require('@discordjs/voice');
+const { createAudioPlayer } = require('@discordjs/voice');
 
 let player;
 
