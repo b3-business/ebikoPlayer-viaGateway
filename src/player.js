@@ -14,5 +14,6 @@ function getAudioPlayer() {
 
 
 module.exports = {
+    initAudioPlayer,
     getAudioPlayer
 }
