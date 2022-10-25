@@ -4,6 +4,8 @@ const { getAudioPlayer } = require('../player');
 
 const sources = {
     'bennyPath': '/Users/bjesuiter/02 The Saddest Noise.m4a', 
+    'anfang': '/Users/bjesuiter/temp/03 Auserkoren.mp3', 
+    'ende': '/Users/bjesuiter/temp/11 Friede auf Erden.mp3', 
     'bastiPath': '/home/ebiko/Music/Games und Filme (music)/ff8/02 - ride on.mp3'
 }
 
@@ -15,7 +17,8 @@ module.exports = {
             option.setName('src')
             .setDescription('Select the audio source (currently only 2 options)')
             .setRequired(true)
-            .addChoices({name: 'Basti', value: "bastiPath"}, {name: 'Benny', value: 'bennyPath'})
+            .addChoices({name: 'Basti', value: "bastiPath"}, {name: 'Benny', value: 'bennyPath'}, 
+            {name: 'Anfangsmusik', value: 'anfang'}, {name: 'Abschlussmusik', value: 'ende'})
         ),
 
     async execute(interaction) {
