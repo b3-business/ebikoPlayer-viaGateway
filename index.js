@@ -11,7 +11,7 @@ const client = new Client({
     ]
 });
 
-const resolvedToken = process.env?.DISCORD_TOKEN ?? token;
+const resolvedToken = process.env.DISCORD_TOKEN ?? token;
 
 client.commands = new Collection();
 
