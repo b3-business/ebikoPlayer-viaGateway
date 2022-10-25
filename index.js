@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
-const { token } = require('./config.json');
+
 const { initAudioPlayer } = require('./src/player.js');
 
 const client = new Client({
@@ -11,7 +11,14 @@ const client = new Client({
     ]
 });
 
-const resolvedToken = process.env.DISCORD_TOKEN ?? token;
+const envToken = process.env.DISCORD_TOKEN; 
+let token; 
+if (!envToken) {
+    const configImport = require('./config.json');
+    token = configImport.token;
+}
+
+const resolvedToken =  envToken ?? token;
 
 client.commands = new Collection();
 
