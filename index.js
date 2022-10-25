@@ -11,6 +11,8 @@ const client = new Client({
     ]
 });
 
+const resolvedToken = process.env?.DISCORD_TOKEN ?? token;
+
 client.commands = new Collection();
 
 const commandsPath = path.join(__dirname, 'src', 'commands');
@@ -50,4 +52,4 @@ client.on(Events.InteractionCreate, async interaction => {
     }
 });
 
-client.login(token);
+client.login(resolvedToken);
