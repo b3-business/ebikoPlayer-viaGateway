@@ -4,9 +4,8 @@
   "description": "Discord Bot to stream audio from local source or input stream to voice chat. ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "deploy": "node deploy-commands.js"
+    "start": "doppler run -- node index.js",
+    "deploy": "doppler run -- node deploy-commands.js"
   },
   "author": "Bastian Ebiko Jesuiter",
   "license": "ISC",
