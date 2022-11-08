@@ -14,7 +14,7 @@ export function validateInteraction(interaction: Interaction) {
 
   const member = interaction.member;
   if (member === null || !isGuildMember(member)) {
-    console.error(`interaction.member is not a GuildMember`);
+    console.error(`interaction.member is not a GuildMember`, interaction);
     return new Error(`MEMBER_IS_NOT_A_GUILD_MEMBER`);
   }
 
