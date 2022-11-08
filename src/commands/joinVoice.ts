@@ -4,33 +4,19 @@ import { VoiceConnectionStatus } from "@discordjs/voice";
 import { getAudioPlayer } from "../player";
 import { Interaction } from "discord.js";
 import { isGuildMember } from "../util/isGuildMember";
+import { validateInteraction } from "../util/validateInteraction";
 
 export const data = new SlashCommandBuilder()
   .setName("joinvoice")
   .setDescription("Joins the specified voice channel.");
 
-export async function execute(interaction: Interaction) {
-  if (!interaction) {
-    console.error(`Tried to execute a command without an interaction`);
+export async function execute(rawInteraction: Interaction) {
+  const result = validateInteraction(rawInteraction);
+  if (result instanceof Error) {
+    console.error(result.message);
     return;
   }
-
-  if (!interaction.isChatInputCommand()) {
-    console.info(`Interaction is not a ChatInputCommand: `, interaction);
-    return;
-  }
-
-  const member = interaction.member;
-  if (member === null || !isGuildMember(member)) {
-    console.error(`interaction.member is not a GuildMember`);
-    return;
-  }
-
-  const guild = interaction.guild;
-  if (!guild) {
-    console.error(`Interaction has no guild attached! `, interaction);
-    return;
-  }
+  const { interaction, member, guild } = result;
 
   const voiceChannelId = member.voice.channelId ?? "";
   const voiceChannel = guild.channels.cache.get(voiceChannelId);
