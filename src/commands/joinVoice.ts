@@ -30,7 +30,7 @@ export async function execute(rawInteraction: Interaction) {
   const connection = joinVoiceChannel({
     channelId: voiceChannel.id,
     guildId: guild.id,
-    adapterCreator: interaction.guild.voiceAdapterCreator,
+    adapterCreator: guild.voiceAdapterCreator,
   });
 
   connection.on(VoiceConnectionStatus.Ready, () => {
