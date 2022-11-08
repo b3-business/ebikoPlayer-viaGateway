@@ -6,7 +6,7 @@ import fs from "node:fs";
 export async function loadCommands() {
   const commands = new Collection<string, Command>();
 
-  const commandsPath = path.join(__dirname, "src", "commands");
+  const commandsPath = path.join(__dirname, "..", "commands");
   const commandFiles = fs
     .readdirSync(commandsPath)
     .filter((file) => file.endsWith(".ts"));
