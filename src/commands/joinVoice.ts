@@ -1,9 +1,6 @@
-import { SlashCommandBuilder } from "discord.js";
-import { joinVoiceChannel } from "@discordjs/voice";
-import { VoiceConnectionStatus } from "@discordjs/voice";
+import { joinVoiceChannel, VoiceConnectionStatus } from "@discordjs/voice";
+import { Interaction, SlashCommandBuilder } from "discord.js";
 import { getAudioPlayer } from "../player";
-import { Interaction } from "discord.js";
-import { isGuildMember } from "../util/isGuildMember";
 import { validateInteraction } from "../util/validateInteraction";
 
 export const data = new SlashCommandBuilder()
