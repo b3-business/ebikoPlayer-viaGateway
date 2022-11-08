@@ -14,13 +14,15 @@ for (const file of commandFiles) {
   commands.push(command.data.toJSON());
 }
 
-const token = process.env.DISCORD_TOKEN;
-const clientId = process.env.CLIENT_ID;
-const brudiGuildId = process.env.BRUDI_GUILD_ID;
-const bgfGuildId = process.env.BGF_GUILD_ID;
+const {
+  DISCORD_TOKEN,
+  CLIENT_ID,
+  BRUDI_GUILD_ID,
+  BGF_GUILD_ID
+} = process.env;
 
 // Construct and prepare an instance of the REST module
-const rest = new REST({ version: '10' }).setToken(token);
+const rest = new REST({ version: '10' }).setToken(DISCORD_TOKEN);
 
 // and deploy your commands!
 (async () => {
@@ -32,7 +34,7 @@ const rest = new REST({ version: '10' }).setToken(token);
     // The put method is used to fully refresh all commands in the guild with the current set
     // refresh all commands on brudi server
     const brudiResult = await rest.put(
-      Routes.applicationGuildCommands(clientId, brudiGuildId),
+      Routes.applicationGuildCommands(CLIENT_ID, BRUDI_GUILD_ID),
       { body: commands }
     );
     console.log(
@@ -41,7 +43,7 @@ const rest = new REST({ version: '10' }).setToken(token);
 
     // refresh all commands on bgf server
     const bgfResult = await rest.put(
-      Routes.applicationGuildCommands(clientId, bgfGuildId),
+      Routes.applicationGuildCommands(CLIENT_ID, BGF_GUILD_ID),
       { body: commands }
     );
     console.log(

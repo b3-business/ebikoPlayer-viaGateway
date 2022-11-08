@@ -8,7 +8,7 @@ const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates],
 });
 
-const token = process.env.DISCORD_TOKEN;
+const { DISCORD_TOKEN } = process.env;
 
 client.commands = new Collection();
 
@@ -56,4 +56,4 @@ client.on(Events.InteractionCreate, async (interaction) => {
   }
 });
 
-client.login(token);
+client.login(DISCORD_TOKEN);
