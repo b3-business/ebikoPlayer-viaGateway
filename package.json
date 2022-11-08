@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "doppler run -- node index.js",
-    "deploy": "doppler run -- node deploy-commands.js"
+    "deploy": "doppler run -- tsx deploy-commands.ts"
   },
   "author": "Bastian Ebiko Jesuiter",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "node-microphone": "^0.1.5"
   },
   "devDependencies": {
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "tsx": "^3.11.0"
   }
 }

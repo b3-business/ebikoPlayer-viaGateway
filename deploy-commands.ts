@@ -1,5 +1,5 @@
-const { REST, Routes } = require('discord.js');
-const fs = require('node:fs');
+import { REST, Routes } from 'discord.js';
+import fs from 'node:fs';
 
 const commandsPath = './src/commands';
 const commands = [];
@@ -14,12 +14,7 @@ for (const file of commandFiles) {
   commands.push(command.data.toJSON());
 }
 
-const {
-  DISCORD_TOKEN,
-  CLIENT_ID,
-  BRUDI_GUILD_ID,
-  BGF_GUILD_ID
-} = process.env;
+const { DISCORD_TOKEN, CLIENT_ID, BRUDI_GUILD_ID, BGF_GUILD_ID } = process.env;
 
 // Construct and prepare an instance of the REST module
 const rest = new REST({ version: '10' }).setToken(DISCORD_TOKEN);
