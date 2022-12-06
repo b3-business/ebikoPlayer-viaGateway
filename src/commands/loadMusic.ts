@@ -13,13 +13,7 @@ export const data = new SlashCommandBuilder()
       .setName("src")
       .setDescription("Select the audio source (currently only 2 options)")
       .setRequired(true)
-      .addChoices(
-        { name: "Basti", value: "bastiPath" },
-        { name: "Benny", value: "bennyPath" },
-        { name: "Anfangsmusik", value: "anfang" },
-        { name: "Abschlussmusik", value: "ende" },
-        { name: "URL", value: "url" },
-      )
+      .addChoices(...Object.values(sources))
   );
 
 export async function execute(rawInteraction: Interaction) {
@@ -45,7 +39,7 @@ export async function execute(rawInteraction: Interaction) {
   const srcOption = interaction.options.getString("src") ?? "";
   console.log(srcOption);
 
-  const srcPath = sources[srcOption];
+  const srcPath = sources[srcOption].pathOrUrl;
   const player = getAudioPlayer();
   const resource = createAudioResource(srcPath);
 
