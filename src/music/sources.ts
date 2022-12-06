@@ -55,9 +55,9 @@ export const sources: Sources = {
   },
 
   // relative path calculated from the workdir of the node executable from `npm start` (which should equal to the root of this git repo)
-  railwayDemo: {
+  botLocalDemo: {
     pathOrUrl: "./resources/demo_flocks_a_mile_wide.mp3",
-    name: "Railway Demo",
-    value: "railwayDemo",
+    name: "Bot Local Demo",
+    value: "botLocalDemo",
   },
 };
