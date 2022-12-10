@@ -4,8 +4,9 @@
   "description": "Discord Bot to stream audio from local source or input stream to voice chat. ",
   "main": "index.js",
   "scripts": {
+    "prestart": "npm run deploy-commands",
     "start": "doppler run -- tsx index.ts",
-    "deploy": "doppler run -- tsx deploy-commands.ts"
+    "deploy-commands": "doppler run -- tsx deploy-commands.ts"
   },
   "author": "Bastian Ebiko Jesuiter",
   "license": "ISC",
