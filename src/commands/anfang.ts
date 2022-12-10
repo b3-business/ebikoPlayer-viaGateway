@@ -29,7 +29,8 @@ export async function execute(rawInteraction: Interaction) {
     return;
   }
 
-  const srcPath = sources["anfang"].pathOrUrl;
+
+  const srcPath = sources.anfang.pathOrUrl;
   const player = getAudioPlayer();
   const resource = createAudioResource(srcPath);
 
