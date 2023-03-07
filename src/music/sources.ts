@@ -27,13 +27,18 @@ const sourcesArray = [
     name: "Anfangsmusik",
     value: "anfang",
     pathOrUrl:
-      "/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/JB Core/Bruno Gröning Freundeskreis/Liebet das Leben/02 Ich Will Mein Leben.m4a",
+      // "/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/JB Core/Bruno Gröning Freundeskreis/Liebet das Leben/01 Er Kam Zu Euch.m4a",
+      // '/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/JB Core/Bruno Gröning Freundeskreis/Instrumentalkompositionen/02 Fantasie in C * "Brief von der Mutter".mp3',
+      "/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/JB Core/Bruno Gröning Freundeskreis/Weit/2-08 Schau die ew'ge Morgensonn' - Mandoline & Gitarre.m4a"
   },
   {
     name: "Endmusik",
     value: "ende",
     pathOrUrl:
-      "/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/JB Core/Bruno Gröning Freundeskreis/Werke Alter Meister/12 3. Satz _Allegro.m4a",
+
+      "/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/JB Core/Bruno Gröning Freundeskreis/Eine neue Erde/06 Von Vergangenen Heldentaten.m4a"
+    // "/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/JB Core/Bruno Gröning Freundeskreis/Liebet das Leben/05 Heil'ger Friede.m4a",
+    //   "/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/JB Core/Bruno Gröning Freundeskreis/Werke Alter Meister/12 3. Satz _Allegro.m4a",
   },
   {
     name: "Basti",
