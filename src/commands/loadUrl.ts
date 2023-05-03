@@ -3,6 +3,7 @@ import { createAudioResource, getVoiceConnection } from "@discordjs/voice";
 import { getAudioPlayer } from "../player";
 import { Interaction } from "discord.js";
 import { validateInteraction } from "../util/validateInteraction";
+import { updatePlayerStatusState } from "../util/playerStatusState";
 
 export const data = new SlashCommandBuilder()
   .setName("loadurl")
@@ -41,6 +42,9 @@ export async function execute(rawInteraction: Interaction) {
 
   const player = getAudioPlayer();
   const resource = createAudioResource(url);
+
+  // update the player status state
+  updatePlayerStatusState(interaction, url, resource);
 
   // play the player with the new resouce
   player.play(resource);
