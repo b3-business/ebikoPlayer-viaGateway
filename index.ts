@@ -39,6 +39,8 @@ async function main() {
     }
   });
 
+  global.client=client;
+
   client.login(DISCORD_TOKEN);
 }
 
