@@ -2,14 +2,14 @@ import { Interaction, VoiceChannel } from "discord.js";
 import { validateInteraction } from "./validateInteraction";
 import { AudioResource, VoiceConnection, getVoiceConnection } from "@discordjs/voice";
 
-
 type playerStatusState = {
   composer: string;
   title: string;
   album: string;
   artist: string;
   lenght: number;
-  resource: AudioResource|undefined;
+  resource: AudioResource | undefined;
+  progress: () => string;
   queue: string[];
   playing: boolean;
   guild: string;
@@ -24,6 +24,7 @@ const playerStatusStateDefault: playerStatusState = {
   artist: "",
   lenght: 0,
   resource: undefined,
+  progress: getDuration,
   queue: [],
   playing: false,
   guild: "",
@@ -31,14 +32,23 @@ const playerStatusStateDefault: playerStatusState = {
   connection: undefined,
 }
 
-let playerStatusState: playerStatusState|undefined = undefined;
+let playerStatusState: playerStatusState | undefined = undefined;
 
 export function getPlayerStatusState() {
-  if (!playerStatusState) playerStatusState = {...playerStatusStateDefault};
+  if (!playerStatusState) playerStatusState = { ...playerStatusStateDefault };
   return playerStatusState;
 }
 
-export function updatePlayerStatusState(interaction:Interaction, srcPath:string|undefined, resource:AudioResource|undefined) {
+export function getDuration() {
+  const time_MS = playerStatusState?.resource?.playbackDuration;
+  if (!time_MS) return "0:00";
+  const time = time_MS / 1000;
+  const minutes = Math.floor(time / 60);
+  const seconds = Math.floor(time - minutes * 60);
+  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+}
+
+export function updatePlayerStatusState(interaction: Interaction, srcPath: string | undefined, resource: AudioResource | undefined) {
   // update the player status state
   const playerStatusState = getPlayerStatusState();
   const result = validateInteraction(interaction);
@@ -56,12 +66,12 @@ export function updatePlayerStatusState(interaction:Interaction, srcPath:string|
 
   if (connection?.joinConfig.channelId) {
     interaction.client.channels.fetch(connection.joinConfig.channelId)
-    .then(channel => {
-      if (channel instanceof VoiceChannel) {
-        playerStatusState.channel = channel.name;
-      }
-    });
-  
+      .then(channel => {
+        if (channel instanceof VoiceChannel) {
+          playerStatusState.channel = channel.name;
+        }
+      });
+
     playerStatusState.guild = guild.name;
   }
 
@@ -75,11 +85,10 @@ export function updatePlayerStatusState(interaction:Interaction, srcPath:string|
     // trim filename after ? if it exists
     if (filename?.includes("?")) {
       playerStatusState.title = filename.split("?")[0];
-    } else
-    {
+    } else {
       playerStatusState.title = filename ?? "";
     }
-  }  
+  }
 }
 
 

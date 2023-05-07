@@ -1,30 +1,66 @@
-import { AudioPlayer, createAudioPlayer, AudioPlayerStatus} from "@discordjs/voice";
+import { ActivityType } from "discord.js";
+import { AudioPlayer, createAudioPlayer, AudioPlayerStatus } from "@discordjs/voice";
 
 import { getPlayerStatusState } from "./util/playerStatusState";
+
+import { clientPromise } from "./util/clientSingleton";
 
 let playerStatusState = getPlayerStatusState();
 
 let player: AudioPlayer;
 
-export function initAudioPlayer() {
+export async function initAudioPlayer() {
+
+  const client = await clientPromise;
+
   player = createAudioPlayer();
   playerStatusState = getPlayerStatusState();
-  
+
   // FIXME: Set Activity not working, global.client is available! 
 
   player.on(AudioPlayerStatus.Idle, () => {
     console.log("Audio player is idle");
     playerStatusState.playing = false;
-    global.client?.user.setActivity("Status idle", { type: "LISTENING" });
+    try {
+      client.user?.setActivity({
+        name: "Commands: /play /loadurl /loadmusic",
+        type: ActivityType.Listening,
+      });
+    } catch (error) {
+      console.error(error);
+    }
   }
   );
 
   player.on(AudioPlayerStatus.Playing, () => {
     console.log("Audio player is playing");
     playerStatusState.playing = true;
-    global.client?.user.setActivity("Status playing audio", { type: "PLAYING" });
+    try {
+      client.user?.setActivity({
+        name: "Title: " + playerStatusState.title,
+        type: ActivityType.Playing,
+      });
+    } catch (error) {
+      console.error(error);
+    }
   }
   );
+
+  player.on(AudioPlayerStatus.Paused, () => {
+    console.log("Audio player is paused");
+    playerStatusState.playing = false;
+    try {
+      client.user?.setActivity({
+        name: "resume or status command",
+        type: ActivityType.Listening,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  );
+
+  console.time("Audio player is ready");
 }
 
 export function getAudioPlayer() {
