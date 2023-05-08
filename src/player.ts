@@ -52,8 +52,8 @@ export async function initAudioPlayer() {
     playerStatusState.playing = false;
     try {
       client.user?.setActivity({
-        name: "resume or status command",
         type: ActivityType.Listening,
+        name: `"Paused"`,
       });
     } catch (error) {
       console.error(error);
