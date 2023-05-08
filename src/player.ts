@@ -7,7 +7,7 @@ import {
 
 import { getPlayerStatusState } from "./util/playerStatusState";
 
-import { clientPromise } from "./util/clientSingleton";
+import { clientPromise } from "./util/DiscordClient";
 
 let playerStatusState = getPlayerStatusState();
 

@@ -1,9 +1,9 @@
-import { clientPromise } from "./src/util/clientSingleton";
+import { clientPromise } from "./src/util/DiscordClient";
 const { DISCORD_TOKEN } = process.env;
 
 async function main() {
   const client = await clientPromise;
-  await client.login(process.env.DISCORD_TOKEN);
+  await client.login(DISCORD_TOKEN);
 }
 
 /**
