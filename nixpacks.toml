@@ -5,7 +5,8 @@ providers = ["node"] # disable providers completely
         '...',
         "ffmpeg",
         "doppler",
+        "unzip",
     ] # Install the ffmpeg package from Nix and some other ones
-
-[phases.build]
     cmds = ["bun upgrade", "bun --version"]
+
+    # [phases.build]
