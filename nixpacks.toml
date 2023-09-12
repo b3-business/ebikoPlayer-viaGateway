@@ -6,7 +6,7 @@ providers = ["node"] # disable providers completely
         "ffmpeg",
         "doppler",
         "unzip",
-        "node",
+        "nodejs",
     ] # Install the ffmpeg package from Nix and some other ones
     cmds = ["bun upgrade", "bun --version"]
 
