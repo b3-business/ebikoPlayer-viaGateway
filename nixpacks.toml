@@ -1,2 +1,18 @@
+providers = [] # disable providers completely
+
 [phases.setup]
-    nixPkgs = ['...', "ffmpeg", "doppler"] # Install the ffmpeg package from Nix
+    nixPkgs = [
+        '...',
+        "ffmpeg",
+        "doppler",
+        "curl",
+        "bash",
+    ] # Install the ffmpeg package from Nix and some other ones
+
+[phases.build]
+    cmds = [
+        "echo first",
+        "curl -fsSL https://bun.sh/install | bash",
+        "bun --version",
+        "echo last",
+    ]
