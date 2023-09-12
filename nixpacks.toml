@@ -8,4 +8,4 @@ providers = ["node"] # disable providers completely
     ] # Install the ffmpeg package from Nix and some other ones
 
 [phases.build]
-    cmds = ["npm i -g bun", "bun --version"]
+    cmds = ["bun upgrade", "bun --version"]
