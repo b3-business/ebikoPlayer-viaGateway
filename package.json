@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "prestart": "bun run deploy-commands",
+    "predev": "bun run deploy-commands",
     "start": "doppler run -- bun run ./index.ts",
+    "dev": "doppler run -- bun run --hot ./index.ts",
     "deploy-commands": "doppler run -- bun run ./deploy-commands.ts"
   },
   "author": "Bastian Ebiko Jesuiter",
