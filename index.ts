@@ -1,5 +1,5 @@
-import { Hono } from "hono";
 import { clientPromise } from "./src/util/DiscordClient";
+import Bao from "baojs";
 const { DISCORD_TOKEN } = process.env;
 
 async function main() {
@@ -10,19 +10,19 @@ async function main() {
 /**
  * Adding some api routes to this discord bot server
  */
-const app = new Hono();
-app.get("/health", (c) => {
-  return c.text("Healthcheck successful", 204);
-});
+const app = new Bao();
+const port = parseInt(process.env.PORT || "3000");
 
-export default {
-  port: 3000,
-  fetch: app.fetch,
-};
+app.get("/health", (c) => {
+  return c.sendText("Healthcheck successful", { status: 200 });
+});
 
 /**
  * Run main function and catch top-level errors
  */
+const server = app.listen({ port: port });
+console.log(`Server listening on ${server.hostname}:${port}`);
+
 main().catch((error) => {
   console.error(error);
 });
