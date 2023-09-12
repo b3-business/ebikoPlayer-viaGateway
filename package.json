@@ -4,11 +4,13 @@
   "description": "Discord Bot to stream audio from local source or input stream to voice chat. ",
   "main": "index.js",
   "scripts": {
+    "deploy-commands": "doppler run -- bun run ./deploy-commands.ts",
     "prestart": "bun run deploy-commands",
-    "predev": "bun run deploy-commands",
     "start": "doppler run -- bun run ./index.ts",
+    "predev": "bun run deploy-commands",
     "dev": "doppler run -- bun run --hot ./index.ts",
-    "deploy-commands": "doppler run -- bun run ./deploy-commands.ts"
+    "preprod": "bun install",
+    "prod": "doppler run -- bun run ./index.ts"
   },
   "author": "Bastian Ebiko Jesuiter",
   "license": "ISC",
