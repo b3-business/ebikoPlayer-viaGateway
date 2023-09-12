@@ -1,19 +1,20 @@
-# ebikoPlayer-viaGateway 
+# ebikoPlayer-viaGateway
 
-## Setup doppler 
+## Setup doppler
 
-This Repo uses `doppler` (from doppler.com) for secrets management. 
-For now, doppler only manages local secrets. 
+This Repo uses `doppler` (from doppler.com) for secrets management.
+For now, doppler only manages local secrets.
 
 1. Install doppler-cli: https://docs.doppler.com/docs/install-cli#installation
 2. Run `doppler login`: https://docs.doppler.com/docs/install-cli#authentication
 3. Run `doppler setup`: https://docs.doppler.com/docs/install-cli#project-setup  
    => This will use the doppler.yaml config file in this repo
 
-## Run this repo 
+## Run this repo
 
 Use `npm start` (requires doppler already setup`d)
 
-## Deployment on Railway 
+## Deployment on Railway
 
 => Simply push to Branch `main`
+=> Project URL: https://railway.app/project/b0c4bdea-f6ab-4b27-8fdb-1eb2b70d7575
