@@ -9,7 +9,6 @@
     "start": "doppler run -- bun run ./index.ts",
     "predev": "bun run deploy-commands",
     "dev": "doppler run -- bun run --hot ./index.ts",
-    "preprod": "bun install",
     "prod": "doppler run -- bun run ./index.ts"
   },
   "author": "Bastian Ebiko Jesuiter",
