@@ -6,19 +6,22 @@
   "scripts": {
     "deploy-commands": "doppler run -- bun run ./deploy-commands.ts",
     "prestart": "bun run deploy-commands",
-    "start": "doppler run -- bun run ./index.ts",
+    "start": "doppler run -- tsx ./index.ts",
     "predev": "bun run deploy-commands",
-    "dev": "doppler run -- bun run --hot ./index.ts",
-    "prod": "doppler run -- bun run ./index.ts"
+    "dev": "doppler run -- tsx ./index.ts",
+    "prod": "doppler run -- tsx ./index.ts"
   },
   "author": "Bastian Ebiko Jesuiter",
   "license": "ISC",
   "dependencies": {
     "@discordjs/voice": "^0.16.0",
+    "@types/express": "^4.17.17",
     "baojs": "^0.2.1",
     "discord.js": "^14.13.0",
+    "express": "^4.18.2",
     "libsodium-wrappers": "^0.7.11",
-    "node-microphone": "^0.1.6"
+    "node-microphone": "^0.1.6",
+    "tsx": "^3.12.9"
   },
   "devDependencies": {
     "prettier": "^3.0.3"

@@ -18,3 +18,8 @@ Use `npm start` (requires doppler already setup`d)
 
 => Simply push to Branch `main`
 => Project URL: https://railway.app/project/b0c4bdea-f6ab-4b27-8fdb-1eb2b70d7575
+
+## State of using "bun"
+
+- cannot use bun currently, because the node:dgram api (which is used by discord voice) is not implemented in bun yet
+- therefore i'm still using tsx to run in prod
