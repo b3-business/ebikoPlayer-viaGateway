@@ -28,11 +28,11 @@ const sourcesArray = [
     value: "anfang",
     pathOrUrl:
       // "/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/JB Core/Bruno Gröning Freundeskreis/Liebet das Leben/01 Er Kam Zu Euch.m4a",
-      // '/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/JB Core/Bruno Gröning Freundeskreis/Instrumentalkompositionen/02 Fantasie in C * "Brief von der Mutter".mp3',
-      // "/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno-Gröning Freundeskreis/Die Liebe siegt/08 Zu Dir, Vater, Kommen Wir.m4a",
-      // "/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Weit/2-05 Bruno Gröning.m4a",
-      // "/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Drei Dinge führen zum Ewigen/09 Gott segne dich.m4a",
-      "/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/BGF Chorwochenenden/2023 Belgrad/01 Kato ptitsite - Full.m4a",
+      '/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Instrumentalkompositionen/02 Fantasie in C * "Brief von der Mutter".m4a',
+    // "/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno-Gröning Freundeskreis/Die Liebe siegt/08 Zu Dir, Vater, Kommen Wir.m4a",
+    // "/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Weit/2-05 Bruno Gröning.m4a",
+    // "/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Drei Dinge führen zum Ewigen/09 Gott segne dich.m4a",
+    //"/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/BGF Chorwochenenden/2023 Belgrad/01 Kato ptitsite - Full.m4a",
   },
   {
     name: "Endmusik",
@@ -43,7 +43,8 @@ const sourcesArray = [
       // "/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/JB Core/Bruno Gröning Freundeskreis/Werke Alter Meister/12 3. Satz _Allegro.m4a",
       // "/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno-Gröning Freundeskreis/Die Liebe siegt/05 Von Einer Lieb' Getragen.m4a",
       // "/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Werke Alter Meister/12 3. Satz _Allegro_.m4a",
-      "/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Drei Dinge führen zum Ewigen/15 Abendsegen.m4a",
+      // "/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Drei Dinge führen zum Ewigen/15 Abendsegen.m4a",
+      "/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Liebe ist mein Schwert und Schild/04 Heimatgruß.m4a",
   },
   {
     name: "Basti",
