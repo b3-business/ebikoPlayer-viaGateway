@@ -33,7 +33,8 @@ const sourcesArray = [
       // "/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Weit/2-05 Bruno Gröning.m4a",
       // "/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Drei Dinge führen zum Ewigen/09 Gott segne dich.m4a",
       //"/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/BGF Chorwochenenden/2023 Belgrad/01 Kato ptitsite - Full.m4a",
-      "/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis Spezial/C_Tagungsmusik/28 In Wahrheit ist es Liebe (klarer).m4a",
+      // "/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis Spezial/C_Tagungsmusik/28 In Wahrheit ist es Liebe (klarer).m4a",
+      "/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Der Wunderapostel/24 Beatus bei den Eltern und die Entscheidung.m4a",
   },
   {
     name: "Endmusik",
@@ -46,7 +47,8 @@ const sourcesArray = [
       // "/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Werke Alter Meister/12 3. Satz _Allegro_.m4a",
       // "/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Drei Dinge führen zum Ewigen/15 Abendsegen.m4a",
       // "/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Liebe ist mein Schwert und Schild/04 Heimatgruß.m4a",
-      "/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis Spezial/C_Tagungsmusik/19 Hebe den Blick - Piano _ Gesang.mp3",
+      // "/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis Spezial/C_Tagungsmusik/19 Hebe den Blick - Piano _ Gesang.mp3",
+      "/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Es saß ein klein Waldvögelein/1-04 Walzer.m4a",
   },
   {
     name: "Basti",
