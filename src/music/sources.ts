@@ -27,7 +27,8 @@ const sourcesArray = [
     name: "Anfangsmusik",
     value: "anfang",
     pathOrUrl:
-      "/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Liebet das Leben/01 Er Kam Zu Euch.m4a",
+      // "/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Liebet das Leben/01 Er Kam Zu Euch.m4a",
+      "/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis Spezial/C_Tagungsmusik/14 Danklied.mp3",
     // '/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Instrumentalkompositionen/02 Fantasie in C * "Brief von der Mutter".m4a',
     // "/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno-Gröning Freundeskreis/Die Liebe siegt/08 Zu Dir, Vater, Kommen Wir.m4a",
     // "/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Weit/2-05 Bruno Gröning.m4a",
@@ -42,7 +43,8 @@ const sourcesArray = [
     pathOrUrl:
       // "/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/JB Core/Bruno Gröning Freundeskreis/Eine neue Erde/06 Von Vergangenen Heldentaten.m4a"
       // "/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/JB Core/Bruno Gröning Freundeskreis/Liebet das Leben/05 Heil'ger Friede.m4a",
-      "/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Werke Alter Meister/12 3. Satz _Allegro_.m4a",
+      // "/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Werke Alter Meister/12 3. Satz _Allegro_.m4a",
+      "/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis Spezial/C_Tagungsmusik/15 Frieden auf Erden.mp3",
     // "/Users/bjesuiter/@Sync/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno-Gröning Freundeskreis/Die Liebe siegt/05 Von Einer Lieb' Getragen.m4a",
     // "/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Werke Alter Meister/12 3. Satz _Allegro_.m4a",
     // "/Volumes/MacMini Data/bjesuiter-nextcloud/#Bibliotheken/Music/Bruno Gröning - Freundeskreis/Drei Dinge führen zum Ewigen/15 Abendsegen.m4a",
