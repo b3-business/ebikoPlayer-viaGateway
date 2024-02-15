@@ -6,8 +6,8 @@ import { validateInteraction } from "../util/validateInteraction";
 import { sources } from "../music/sources";
 
 export const data = new SlashCommandBuilder()
-  .setName("anfang")
-  .setDescription("Loads the music resource for Anfang.");
+  .setName("demo")
+  .setDescription("Loads and plays a demo song from the bots storage.");
 
 export async function execute(rawInteraction: Interaction) {
   const result = validateInteraction(rawInteraction);
@@ -29,7 +29,7 @@ export async function execute(rawInteraction: Interaction) {
     return;
   }
 
-  const srcPath = sources.anfang.pathOrUrl;
+  const srcPath = sources.botLocalDemo.pathOrUrl;
   const player = getAudioPlayer();
   const resource = createAudioResource(srcPath);
 
