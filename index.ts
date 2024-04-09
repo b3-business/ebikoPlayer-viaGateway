@@ -1,7 +1,7 @@
-import { clientPromise } from "./src/util/DiscordClient";
+import { clientPromise } from "./src/util/DiscordClient.ts";
 import Express from "express";
 
-const { DISCORD_TOKEN } = process.env;
+const DISCORD_TOKEN = Deno.env.get("DISCORD_TOKEN");
 
 async function main() {
   const client = await clientPromise;
@@ -13,7 +13,7 @@ async function main() {
  * NOTE: Use Bao when using bun for running! (Faster than express)
  * Currently simply uses express
  */
-const port = parseInt(process.env.PORT || "3000");
+const port = Deno.env.get("PORT") ?? 3000;
 
 // const app = new Bao();
 // app.get("/health", (c) => {
