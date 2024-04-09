@@ -1,6 +1,6 @@
 import { Interaction, SlashCommandBuilder } from "discord.js";
 import { getVoiceConnection } from "@discordjs/voice";
-import { validateInteraction } from "../util/validateInteraction";
+import { validateInteraction } from "../util/validateInteraction.ts";
 
 export const data = new SlashCommandBuilder()
   .setName("leavevoice")

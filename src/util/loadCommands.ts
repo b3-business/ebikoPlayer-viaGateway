@@ -1,30 +1,25 @@
 import { Collection } from "discord.js";
+import { dirname, join } from "jsr:@std/url";
 import { Command } from "../types/Command.ts";
-import { fileURLToPath } from "node:url";
-import path from "node:path";
-import fs from "node:fs";
-import { copy, ensureDir, ensureFile, move } from "jsr:@std/fs";
 
 export async function loadCommands() {
   const commands = new Collection<string, Command>();
-  const __dirname = path.basename(fileURLToPath(import.meta.url));
 
-  const commandsPath = path.join(__dirname, "..", "commands");
+  const commandsPath = join(dirname(import.meta.url), "..", "commands");
   console.log(commandsPath);
-  const commandFiles = fs
-    .readdirSync(commandsPath)
-    .filter((file) => file.endsWith(".ts"));
 
-  for (const file of commandFiles) {
-    const filePath = path.join(commandsPath, file);
-    const command: Command = await import(filePath);
+  for await (const commandFile of Deno.readDir(commandsPath)) {
+    if (!commandFile.name.endsWith(".ts")) continue;
+
+    const fileUrl = join(commandsPath, commandFile.name).href;
+    const command: Command = await import(fileUrl);
 
     // Set a new item in the Collection with the key as the command name and the value as the exported module
     if ("data" in command && "execute" in command) {
       commands.set(command.data.name, command);
     } else {
       console.log(
-        `[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`,
+        `[WARNING] The command at ${fileUrl} is missing a required "data" or "execute" property.`,
       );
     }
   }

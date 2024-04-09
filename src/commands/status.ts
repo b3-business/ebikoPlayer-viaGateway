@@ -1,15 +1,14 @@
 import { SlashCommandBuilder } from "discord.js";
-import { getAudioPlayer } from "../player";
+import { getAudioPlayer } from "../player.ts";
 import { Interaction } from "discord.js";
-import { validateInteraction } from "../util/validateInteraction";
-import { getPlayerStatusState } from "../util/playerStatusState";
+import { validateInteraction } from "../util/validateInteraction.ts";
+import { getPlayerStatusState } from "../util/playerStatusState.ts";
 
 export const data = new SlashCommandBuilder()
   .setName("status")
   .setDescription("Returns Current Bot Status in an overview.");
 
 export async function execute(rawInteraction: Interaction) {
-
   const playerStatusState = getPlayerStatusState();
 
   const player = getAudioPlayer();
@@ -30,8 +29,11 @@ export async function execute(rawInteraction: Interaction) {
     `Playing: ${playerStatusState.playing}`,
     `Guild: ${playerStatusState.guild}`,
     `Channel: ${playerStatusState.channel}`,
-    `Voice Connection Status: ${playerStatusState.connection?.state.status}`
-  ]
+    `Voice Connection Status: ${playerStatusState.connection?.state.status}`,
+  ];
 
-  await interaction.reply({ content: returnMessage.join("\n"), ephemeral: true });
+  await interaction.reply({
+    content: returnMessage.join("\n"),
+    ephemeral: true,
+  });
 }

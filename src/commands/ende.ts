@@ -1,9 +1,9 @@
 import { SlashCommandBuilder } from "discord.js";
 import { createAudioResource, getVoiceConnection } from "@discordjs/voice";
-import { getAudioPlayer } from "../player";
+import { getAudioPlayer } from "../player.ts";
 import { Interaction } from "discord.js";
-import { validateInteraction } from "../util/validateInteraction";
-import { sources } from "../music/sources";
+import { validateInteraction } from "../util/validateInteraction.ts";
+import { sources } from "../music/sources.ts";
 
 export const data = new SlashCommandBuilder()
   .setName("ende")

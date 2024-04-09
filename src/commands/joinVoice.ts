@@ -1,7 +1,7 @@
 import { joinVoiceChannel, VoiceConnectionStatus } from "@discordjs/voice";
 import { Interaction, SlashCommandBuilder } from "discord.js";
-import { getAudioPlayer } from "../player";
-import { validateInteraction } from "../util/validateInteraction";
+import { getAudioPlayer } from "../player.ts";
+import { validateInteraction } from "../util/validateInteraction.ts";
 
 export const data = new SlashCommandBuilder()
   .setName("joinvoice")

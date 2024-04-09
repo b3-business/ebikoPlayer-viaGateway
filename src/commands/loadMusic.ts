@@ -1,10 +1,14 @@
-import { BaseGuildVoiceChannel, SlashCommandBuilder, VoiceChannel } from "discord.js";
+import {
+  BaseGuildVoiceChannel,
+  SlashCommandBuilder,
+  VoiceChannel,
+} from "discord.js";
 import { createAudioResource, getVoiceConnection } from "@discordjs/voice";
-import { getAudioPlayer } from "../player";
+import { getAudioPlayer } from "../player.ts";
 import { Interaction } from "discord.js";
-import { validateInteraction } from "../util/validateInteraction";
-import { sources } from "../music/sources";
-import { updatePlayerStatusState } from "../util/playerStatusState";
+import { validateInteraction } from "../util/validateInteraction.ts";
+import { sources } from "../music/sources.ts";
+import { updatePlayerStatusState } from "../util/playerStatusState.ts";
 
 export const data = new SlashCommandBuilder()
   .setName("loadmusic")
@@ -29,7 +33,7 @@ export async function execute(rawInteraction: Interaction) {
   const connection = getVoiceConnection(guild.id);
 
   // if there is no connection, return
-  if (!connection) { 
+  if (!connection) {
     await interaction.reply({
       content: "I am not in a voice channel!",
       ephemeral: true,
@@ -40,14 +44,14 @@ export async function execute(rawInteraction: Interaction) {
   const srcOption = interaction.options.getString("src") ?? "";
   console.log(srcOption);
 
+  // @ts-expect-error TODO: Fix later
   const srcPath = sources[srcOption].pathOrUrl;
   const player = getAudioPlayer();
   const resource = createAudioResource(srcPath);
 
-
   // update the player status state
   updatePlayerStatusState(interaction, srcPath, resource);
-  
+
   // play the player with the new resouce
   player.play(resource);
 

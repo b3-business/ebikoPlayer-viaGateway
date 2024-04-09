@@ -1,8 +1,8 @@
 import { SlashCommandBuilder } from "discord.js";
 import { getVoiceConnection } from "@discordjs/voice";
-import { getAudioPlayer } from "../player";
+import { getAudioPlayer } from "../player.ts";
 import { Interaction } from "discord.js";
-import { validateInteraction } from "../util/validateInteraction";
+import { validateInteraction } from "../util/validateInteraction.ts";
 
 export const data = new SlashCommandBuilder()
   .setName("stop")
