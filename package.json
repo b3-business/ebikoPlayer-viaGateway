@@ -4,7 +4,7 @@
   "description": "Discord Bot to stream audio from local source or input stream to voice chat. ",
   "main": "index.js",
   "scripts": {
-    "deploy-commands": "bun run ./deploy-commands.ts",
+    "deploy-commands": "dotenvx run --env-file=.env.local -- deno run --unstable-fs -A ./deploy-commands.ts",
     "prestart": "bun run deploy-commands",
     "start": "dotenvx run --env-file=.env.local -- deno run -A ./index.ts",
     "predev": "bun run deploy-commands",
