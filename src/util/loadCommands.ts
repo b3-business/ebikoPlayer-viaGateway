@@ -1,10 +1,12 @@
 import { Collection } from "discord.js";
 import { Command } from "../types/Command";
+import { fileURLToPath } from "node:url";
 import path from "node:path";
 import fs from "node:fs";
 
 export async function loadCommands() {
   const commands = new Collection<string, Command>();
+  const __dirname = fileURLToPath(import.meta.url);
 
   const commandsPath = path.join(__dirname, "..", "commands");
   const commandFiles = fs

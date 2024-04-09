@@ -6,7 +6,7 @@
   "scripts": {
     "deploy-commands": "bun run ./deploy-commands.ts",
     "prestart": "bun run deploy-commands",
-    "start": "dotenvx run --env-file=.env.local -- tsx ./index.ts",
+    "start": "dotenvx run --env-file=.env.local -- deno run -A --unstable-sloppy-imports ./index.ts",
     "predev": "bun run deploy-commands",
     "dev": "tsx ./index.ts",
     "prod": "tsx ./index.ts"
