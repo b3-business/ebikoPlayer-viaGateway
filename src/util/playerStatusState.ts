@@ -1,6 +1,10 @@
 import { Interaction, VoiceChannel } from "discord.js";
-import { validateInteraction } from "./validateInteraction";
-import { AudioResource, VoiceConnection, getVoiceConnection } from "@discordjs/voice";
+import { validateInteraction } from "./validateInteraction.ts";
+import {
+  AudioResource,
+  getVoiceConnection,
+  VoiceConnection,
+} from "@discordjs/voice";
 
 type playerStatusState = {
   composer: string;
@@ -15,7 +19,7 @@ type playerStatusState = {
   guild: string;
   channel: string;
   connection: VoiceConnection | undefined;
-}
+};
 
 const playerStatusStateDefault: playerStatusState = {
   composer: "",
@@ -30,7 +34,7 @@ const playerStatusStateDefault: playerStatusState = {
   guild: "",
   channel: "",
   connection: undefined,
-}
+};
 
 let playerStatusState: playerStatusState | undefined = undefined;
 
@@ -48,7 +52,11 @@ export function getDuration() {
   return `${minutes}:${seconds.toString().padStart(2, "0")}`;
 }
 
-export function updatePlayerStatusState(interaction: Interaction, srcPath: string | undefined, resource: AudioResource | undefined) {
+export function updatePlayerStatusState(
+  interaction: Interaction,
+  srcPath: string | undefined,
+  resource: AudioResource | undefined,
+) {
   // update the player status state
   const playerStatusState = getPlayerStatusState();
   const result = validateInteraction(interaction);
@@ -60,13 +68,14 @@ export function updatePlayerStatusState(interaction: Interaction, srcPath: strin
   const { guild } = result;
 
   // get the voice connection
-  const connection = playerStatusState.connection ?? getVoiceConnection(guild.id);
+  const connection = playerStatusState.connection ??
+    getVoiceConnection(guild.id);
 
   playerStatusState.connection = connection;
 
   if (connection?.joinConfig.channelId) {
     interaction.client.channels.fetch(connection.joinConfig.channelId)
-      .then(channel => {
+      .then((channel) => {
         if (channel instanceof VoiceChannel) {
           playerStatusState.channel = channel.name;
         }
@@ -90,5 +99,3 @@ export function updatePlayerStatusState(interaction: Interaction, srcPath: strin
     }
   }
 }
-
-

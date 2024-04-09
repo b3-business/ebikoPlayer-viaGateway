@@ -1,9 +1,8 @@
 import { Client, Events, GatewayIntentBits } from "discord.js";
-import { initAudioPlayer } from "../player";
-import { loadCommands } from "./loadCommands";
+import { initAudioPlayer } from "../player.ts";
+import { loadCommands } from "./loadCommands.ts";
 
 export const clientPromise: Promise<Client> = createClient();
-
 
 async function createClient() {
   const client = new Client({

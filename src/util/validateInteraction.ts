@@ -1,5 +1,5 @@
 import { Interaction } from "discord.js";
-import { isGuildMember } from "./isGuildMember";
+import { isGuildMember } from "./isGuildMember.ts";
 
 export function validateInteraction(interaction: Interaction) {
   if (!interaction) {

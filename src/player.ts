@@ -5,9 +5,9 @@ import {
   createAudioPlayer,
 } from "@discordjs/voice";
 
-import { getPlayerStatusState } from "./util/playerStatusState";
+import { getPlayerStatusState } from "./util/playerStatusState.ts";
 
-import { clientPromise } from "./util/DiscordClient";
+import { clientPromise } from "./util/DiscordClient.ts";
 
 let playerStatusState = getPlayerStatusState();
 

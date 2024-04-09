@@ -1,14 +1,16 @@
 import { Collection } from "discord.js";
-import { Command } from "../types/Command";
+import { Command } from "../types/Command.ts";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import fs from "node:fs";
+import { copy, ensureDir, ensureFile, move } from "jsr:@std/fs";
 
 export async function loadCommands() {
   const commands = new Collection<string, Command>();
-  const __dirname = fileURLToPath(import.meta.url);
+  const __dirname = path.basename(fileURLToPath(import.meta.url));
 
   const commandsPath = path.join(__dirname, "..", "commands");
+  console.log(commandsPath);
   const commandFiles = fs
     .readdirSync(commandsPath)
     .filter((file) => file.endsWith(".ts"));
