@@ -6,7 +6,6 @@ export async function loadCommands() {
   const commands = new Collection<string, Command>();
 
   const commandsPath = join(dirname(import.meta.url), "..", "commands");
-  console.log(commandsPath);
 
   for await (const commandFile of Deno.readDir(commandsPath)) {
     if (!commandFile.name.endsWith(".ts")) continue;
