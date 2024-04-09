@@ -4,17 +4,18 @@
   "description": "Discord Bot to stream audio from local source or input stream to voice chat. ",
   "main": "index.js",
   "scripts": {
-    "deploy-commands": "doppler run -- bun run ./deploy-commands.ts",
+    "deploy-commands": "bun run ./deploy-commands.ts",
     "prestart": "bun run deploy-commands",
-    "start": "doppler run -- tsx ./index.ts",
+    "start": "dotenvx run --env-file=.env.local -- tsx ./index.ts",
     "predev": "bun run deploy-commands",
-    "dev": "doppler run -- tsx ./index.ts",
-    "prod": "doppler run -- tsx ./index.ts"
+    "dev": "tsx ./index.ts",
+    "prod": "tsx ./index.ts"
   },
   "author": "Bastian Ebiko Jesuiter",
   "license": "ISC",
   "dependencies": {
     "@discordjs/voice": "^0.16.1",
+    "@dotenvx/dotenvx": "^0.32.0",
     "@types/express": "^4.17.21",
     "baojs": "^0.2.1",
     "discord.js": "^14.14.1",

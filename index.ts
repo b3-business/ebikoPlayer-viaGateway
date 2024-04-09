@@ -1,5 +1,6 @@
 import { clientPromise } from "./src/util/DiscordClient";
 import Express from "express";
+
 const { DISCORD_TOKEN } = process.env;
 
 async function main() {
