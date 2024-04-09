@@ -23,7 +23,7 @@
     "express": "^4.19.2",
     "libsodium-wrappers": "^0.7.13",
     "node-microphone": "^0.1.6",
-    "tsx": "^4.7.1"
+    "tsx": "^4.7.2"
   },
   "devDependencies": {
     "prettier": "^3.2.5"
