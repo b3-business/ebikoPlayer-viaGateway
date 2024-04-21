@@ -10,6 +10,10 @@ import { getAudioPlayer } from "../player";
 import { bucketName, minioClientPromise } from "../storage/minio-client";
 import { clientPromise } from "../util/DiscordClient";
 
+/*
+ WIP !!!
+ */
+
 export const data = new SlashCommandBuilder()
   .setName("browse")
   .setDescription("Browses music data on minio (S3)");
