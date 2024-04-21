@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 const EnvSchema = z.object({
+  PORT: z.coerce.number().default(3000),
   BGF_GUILD_ID: z.string(),
   BRUDI_GUILD_ID: z.string(),
   CLIENT_ID: z.string(),

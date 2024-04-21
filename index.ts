@@ -1,7 +1,8 @@
 import { clientPromise } from "./src/util/DiscordClient";
 import Express from "express";
+import { env } from "./src/util/env";
 
-const { DISCORD_TOKEN } = process.env;
+const { DISCORD_TOKEN } = env;
 
 async function main() {
   const client = await clientPromise;
@@ -13,7 +14,6 @@ async function main() {
  * NOTE: Use Bao when using bun for running! (Faster than express)
  * Currently simply uses express
  */
-const port = parseInt(process.env.PORT || "3000");
 
 // const app = new Bao();
 // app.get("/health", (c) => {
@@ -25,8 +25,8 @@ app.get(`/health`, (req, res, next) => {
   res.send("Healthcheck successful");
 });
 
-const server = app.listen({ port: port });
-console.log(`Server listening on Port ${port}`);
+const server = app.listen({ port: env.PORT });
+console.log(`Server listening on Port ${env.PORT}`);
 
 /**
  * Run main function and catch top-level errors
