@@ -28,8 +28,10 @@ async function ebikoAutocomplete(
     const name = item.name?.substring(query.length);
     // get the first folder/item
     const folder = name?.split("/")[0];
+
+    const finalSlash = folder?.includes(".") ? "" : "/";
     // return full path name
-    return query + folder + "/";
+    return query + folder + finalSlash;
   });
 
   const uniqueFolders = [...new Set(possibleFolders)];
