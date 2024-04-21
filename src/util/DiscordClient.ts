@@ -2,6 +2,10 @@ import { Client, Events, GatewayIntentBits } from "discord.js";
 import { initAudioPlayer } from "../player";
 import { loadCommands } from "./loadCommands";
 import { handleMessageComponentInteractions } from "../commands/browse";
+import {
+  data as searchCommand,
+  handleAutocompleteInteraction,
+} from "../commands/search";
 
 export const clientPromise: Promise<Client> = createClient();
 
@@ -18,6 +22,13 @@ async function createClient() {
   });
 
   client.on(Events.InteractionCreate, async (interaction) => {
+    if (
+      interaction.isAutocomplete() &&
+      interaction.commandName === searchCommand.name
+    ) {
+      handleAutocompleteInteraction(interaction);
+    }
+
     if (
       interaction.isMessageComponent() &&
       interaction.customId === "browse_select"
