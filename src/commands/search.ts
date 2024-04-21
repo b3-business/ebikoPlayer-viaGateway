@@ -4,7 +4,13 @@ import { getAudioPlayer } from "../player";
 import { Interaction } from "discord.js";
 import { validateInteraction } from "../util/validateInteraction";
 import { sources } from "../music/sources";
-import { fsCache, fuse, fuseAutocomplete } from "../storage/minio-client";
+import {
+  bucketName,
+  fsCache,
+  fuse,
+  fuseAutocomplete,
+  minioClientPromise,
+} from "../storage/minio-client";
 
 export const data = new SlashCommandBuilder()
   .setName("search")
@@ -77,12 +83,10 @@ export async function execute(rawInteraction: Interaction) {
   }
   const { interaction, guild } = result;
 
-  await interaction.reply({
-    content: `Selected ${result.interaction.options.getString("query")}`,
-    ephemeral: false,
-  });
-
-  return;
+  //   await interaction.reply({
+  //     content: `Selected ${result.interaction.options.getString("query")}`,
+  //     ephemeral: false,
+  //   });
 
   // get the voice connection
   const connection = getVoiceConnection(guild.id);
@@ -96,12 +100,31 @@ export async function execute(rawInteraction: Interaction) {
     return;
   }
 
-  const srcPath = sources.anfang.pathOrUrl;
+  const srcPath = interaction.options.getString("query");
+
+  if (!srcPath) {
+    await interaction.reply({
+      content: "No srcPath provided",
+      ephemeral: true,
+    });
+    return;
+  }
+
+  const minio = await minioClientPromise;
+  const audioUrlPresigned = await minio.presignedUrl(
+    "GET",
+    bucketName,
+    srcPath,
+  );
+
   const player = getAudioPlayer();
-  const resource = createAudioResource(srcPath);
+  const resource = createAudioResource(audioUrlPresigned);
 
   // play the player with the new resouce
   player.play(resource);
 
-  await interaction.reply({ content: `Loaded ${srcPath}`, ephemeral: true });
+  await interaction.reply({
+    content: `Loaded ${srcPath} from minIO!`,
+    ephemeral: true,
+  });
 }
