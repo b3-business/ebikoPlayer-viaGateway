@@ -21,14 +21,37 @@ export async function handleAutocompleteInteraction(
 
   if (focusedOption.name === "query") {
     const query = focusedOption.value as string;
-    const choices = fsCache.filter((item) =>
+    const possibleChoices = fsCache.filter((item) =>
       item.size > 0 && item.name?.startsWith(query)
     );
 
+    // 'Bruno Gröning - Freundeskreis_MP3/Mitsing CD 2003_MP3/02 Der Heilstrom.mp3',
+    // query: "Br"
+    const possibleFolders = possibleChoices.map((item) => {
+      // subtract the query from the name
+      const name = item.name?.substring(query.length);
+      // get the first folder/item
+      const folder = name?.split("/")[0];
+      // return full path name
+      return query + folder + "/";
+    });
+
+    const uniqueFolders = [...new Set(possibleFolders)];
+
+    if (uniqueFolders.length > 25) {
+      await interaction.respond(
+        [{
+          name: "Too many results",
+          value: `${query}/`,
+        }],
+      );
+      return;
+    }
+
     await interaction.respond(
-      choices.map((item) => ({
-        name: item.name ?? "",
-        value: item.name ?? "",
+      uniqueFolders.map((item) => ({
+        name: item ?? "",
+        value: item ?? "",
       })),
     );
   }
