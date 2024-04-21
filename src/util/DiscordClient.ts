@@ -1,9 +1,9 @@
 import { Client, Events, GatewayIntentBits } from "discord.js";
 import { initAudioPlayer } from "../player";
 import { loadCommands } from "./loadCommands";
+import { handleMessageComponentInteractions } from "../commands/browse";
 
 export const clientPromise: Promise<Client> = createClient();
-
 
 async function createClient() {
   const client = new Client({
@@ -18,6 +18,13 @@ async function createClient() {
   });
 
   client.on(Events.InteractionCreate, async (interaction) => {
+    if (
+      interaction.isMessageComponent() &&
+      interaction.customId === "browse_select"
+    ) {
+      handleMessageComponentInteractions(interaction);
+    }
+
     if (!interaction.isChatInputCommand()) return;
 
     const command = commands.get(interaction.commandName);
