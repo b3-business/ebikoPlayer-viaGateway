@@ -4,7 +4,7 @@ import { getAudioPlayer } from "../player";
 import { Interaction } from "discord.js";
 import { validateInteraction } from "../util/validateInteraction";
 import { sources } from "../music/sources";
-import { fsCache } from "../storage/minio-client";
+import { fsCache, fuse, fuseAutocomplete } from "../storage/minio-client";
 
 export const data = new SlashCommandBuilder()
   .setName("search")
@@ -14,6 +14,39 @@ export const data = new SlashCommandBuilder()
       .setAutocomplete(true)
   );
 
+async function ebikoAutocomplete(
+  query: string,
+) {
+  const possibleChoices = fsCache.filter((item) =>
+    item.size > 0 && item.name?.startsWith(query)
+  );
+
+  // 'Bruno Gröning - Freundeskreis_MP3/Mitsing CD 2003_MP3/02 Der Heilstrom.mp3',
+  // query: "Br"
+  const possibleFolders = possibleChoices.map((item) => {
+    // subtract the query from the name
+    const name = item.name?.substring(query.length);
+    // get the first folder/item
+    const folder = name?.split("/")[0];
+    // return full path name
+    return query + folder + "/";
+  });
+
+  const uniqueFolders = [...new Set(possibleFolders)];
+
+  if (uniqueFolders.length > 25) {
+    return [{
+      name: "Too many results",
+      value: `${query}/`,
+    }];
+  }
+
+  return uniqueFolders.map((item) => ({
+    name: item ?? "",
+    value: item ?? "",
+  }));
+}
+
 export async function handleAutocompleteInteraction(
   interaction: AutocompleteInteraction,
 ) {
@@ -21,39 +54,16 @@ export async function handleAutocompleteInteraction(
 
   if (focusedOption.name === "query") {
     const query = focusedOption.value as string;
-    const possibleChoices = fsCache.filter((item) =>
-      item.size > 0 && item.name?.startsWith(query)
+
+    // bjesuiter experiment: fuzzy autocomplete
+    // const autocompleteOptions = fuseAutocomplete(query);
+
+    // ebiko experiment: folder autocomplete
+    const autocompleteOptions = await ebikoAutocomplete(
+      query,
     );
 
-    // 'Bruno Gröning - Freundeskreis_MP3/Mitsing CD 2003_MP3/02 Der Heilstrom.mp3',
-    // query: "Br"
-    const possibleFolders = possibleChoices.map((item) => {
-      // subtract the query from the name
-      const name = item.name?.substring(query.length);
-      // get the first folder/item
-      const folder = name?.split("/")[0];
-      // return full path name
-      return query + folder + "/";
-    });
-
-    const uniqueFolders = [...new Set(possibleFolders)];
-
-    if (uniqueFolders.length > 25) {
-      await interaction.respond(
-        [{
-          name: "Too many results",
-          value: `${query}/`,
-        }],
-      );
-      return;
-    }
-
-    await interaction.respond(
-      uniqueFolders.map((item) => ({
-        name: item ?? "",
-        value: item ?? "",
-      })),
-    );
+    await interaction.respond(autocompleteOptions);
   }
 }
 
