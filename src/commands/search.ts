@@ -1,16 +1,16 @@
-import { AutocompleteInteraction, SlashCommandBuilder } from "discord.js";
 import { createAudioResource, getVoiceConnection } from "@discordjs/voice";
+import {
+  AutocompleteInteraction,
+  Interaction,
+  SlashCommandBuilder,
+} from "discord.js";
 import { getAudioPlayer } from "../player";
-import { Interaction } from "discord.js";
-import { validateInteraction } from "../util/validateInteraction";
-import { sources } from "../music/sources";
 import {
   bucketName,
   fsCache,
-  fuse,
-  fuseAutocomplete,
   minioClientPromise,
 } from "../storage/minio-client";
+import { validateInteraction } from "../util/validateInteraction";
 
 export const data = new SlashCommandBuilder()
   .setName("search")
@@ -50,6 +50,8 @@ async function ebikoAutocomplete(
   }
 
   return uniqueFolders.map((item) => ({
+    // WIP: better query display
+    // name: `${item}`.slice(query.lastIndexOf("/") + 1) ?? "",
     name: item ?? "",
     value: item ?? "",
   }));
