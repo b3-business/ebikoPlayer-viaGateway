@@ -1,4 +1,4 @@
-providers = ["node"] # disable providers completely
+providers = ["node", "python"] # disable providers completely
 
 [phases.setup]
     nixPkgs = [
