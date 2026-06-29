@@ -1,18 +1,27 @@
 # ebikoPlayer-viaGateway
 
-## Setup doppler
+## Setup env
 
-This Repo uses `doppler` (from doppler.com) for secrets management.
-For now, doppler only manages local secrets.
+This repo uses Varlock for local development env loading.
 
-1. Install doppler-cli: https://docs.doppler.com/docs/install-cli#installation
-2. Run `doppler login`: https://docs.doppler.com/docs/install-cli#authentication
-3. Run `doppler setup`: https://docs.doppler.com/docs/install-cli#project-setup  
-   => This will use the doppler.yaml config file in this repo
+1. Install dependencies with `bun install`.
+2. Make sure the `jb` profile secrets exist in macOS Keychain. On a new Mac, recreate them with:
+   ```fish
+   varlock keychain set DISCORD_TOKEN --project ebikoplayer-viagateway --profile jb --write-to .env.jb
+   varlock keychain set MINIO_S3_ACCESS_KEY --project ebikoplayer-viagateway --profile jb --write-to .env.jb
+   varlock keychain set MINIO_S3_SECRET_KEY --project ebikoplayer-viagateway --profile jb --write-to .env.jb
+   ```
+3. Validate the env without printing secrets:
+   ```fish
+   varlock load >/dev/null
+   ```
 
 ## Run this repo
 
-Use `npm start` (requires doppler already setup`d)
+Use `bun run dev` for local development or `bun start` for the start script.
+
+> [!WARNING]
+> The MinIO S3 bucket is gone after cancelling the subscription to `bjesuiter storage1500`.
 
 ## Deployment on Railway
 
